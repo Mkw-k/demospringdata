@@ -1,6 +1,7 @@
 package me.whiteship.demospringdata;
 
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -18,9 +19,24 @@ import java.util.List;
 @Transactional
 public class JpaRunner implements ApplicationRunner {
 
+    /*
     @PersistenceContext
     EntityManager entityManager;
+    */
+    @Autowired
+    PostRepository postRepository;
 
+    @Autowired
+    Keesun keesun;
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+//        postRepository.findAll().forEach(System.out::println);
+        System.out.println("====================");
+        System.out.println(keesun.getName());
+    }
+
+    /*
     @Override
     public void run(ApplicationArguments args) throws Exception {
         List<Post> posts = entityManager.createNativeQuery("Select * from Post", Post.class)
@@ -29,6 +45,7 @@ public class JpaRunner implements ApplicationRunner {
         posts.forEach(System.out::println);
 
     }
+     */
 
     /*
     @Override
